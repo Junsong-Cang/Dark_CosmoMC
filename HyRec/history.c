@@ -154,7 +154,7 @@ void rec_build_history_camb_(const double *OmegaC, const double *OmegaB, const d
     param.PBH_PWL_Gamma = *PBH_PWL_Gamma;
     param.PBH_Spin = *PBH_Spin;
     param.Use_SSCK = 0; // Do this later for camb
-
+    
     // Set default camb params for DM&PBH
     param.odmh2 = param.omh2 - param.obh2;
 
@@ -323,7 +323,7 @@ void rec_get_cosmoparam(FILE *fin, FILE *fout, REC_COSMOPARAMS *param)
     printf("YHe = %f\n", param->Y);
     printf("Neff = %f\n", param->Nnueff);
     */
-
+    
     /****** Added May 2012: explicit dependence on fine-structure constant and electron mass ******/
     /** fsR = alpha_fs(rec) / alpha_fs(today), meR = me(rec) / me(today) **/
 

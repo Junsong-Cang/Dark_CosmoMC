@@ -1,5 +1,6 @@
-/* Dark Matter Energy injection module
-main reference : 2108.13256
+/*
+    Dark Matter Energy injection module
+    main reference : 2108.13256
 */
 
 // Rho_cr * c^2 /h^2, in eV/cm^3
@@ -413,8 +414,8 @@ void Check_Error(double *xe_output, double *Tm_output, double z, int iz, REC_COS
         {
             /* This means energy injection is activated,
             ensure xe and Tm is not too large,
-            this might be useful for blind MCMC
-            values specified in Xe_max_CosmoMC and Tm_max_CosmoMC are already excluded anyway
+            this might be useful for MCMC to filter out unphysically high injection rates that can lead to strange behavior of the codes
+            values specified in Xe_max_CosmoMC and Tm_max_CosmoMC are already excluded for CMB anyway (likely)
             */
             // printf("Resetting xe and Tm for CosmoMC.\n");// complain
             xe_output[iz] = fmin(xe_output[iz], Xe_max_CosmoMC);
@@ -427,7 +428,7 @@ void Check_Error(double *xe_output, double *Tm_output, double z, int iz, REC_COS
     if (isfinite(xe_output[iz]) == 0)
     {
         printf("Error from Check_Error@HyRec: xe is NaN or infinite, debug info:\n");
-        printf("mbh = %E, fbh = %E, z = %f, xe = %E, T = %E\n", params->Mbh, params->fbh, z, xe_output[iz], Tm_output[iz]);
+        printf("mbh = %E, fbh = %E, z = %f, xe = %E, T = %E \n", params->Mbh, params->fbh, z, xe_output[iz], Tm_output[iz]);
         exit(1);
     }
     if (isfinite(Tm_output[iz]) == 0)
@@ -441,6 +442,9 @@ void Check_Error(double *xe_output, double *Tm_output, double z, int iz, REC_COS
 double SSCK_EFF(double xe, int channel)
 {
     double r;
+    printf("Normalize to 21cmFAST format before using this");
+    exit(1);
+    
     if (channel == 1)
     {
         r = (1.0 - xe) / 3.0;

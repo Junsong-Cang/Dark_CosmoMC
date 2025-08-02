@@ -83,7 +83,6 @@ typedef struct
                          will automatically find closest matching spin if entered value is not among above list
                          */
       int Use_SSCK;
-
 } REC_COSMOPARAMS;
 
 void rec_get_cosmoparam(FILE *fin, FILE *fout, REC_COSMOPARAMS *param);
